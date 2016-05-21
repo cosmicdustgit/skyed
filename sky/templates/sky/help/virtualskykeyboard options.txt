@@ -1,0 +1,36 @@
+
+Keyboard shortcuts:
+
+a ? toggle atmosphere
+g ? toggle ground
+h ? change map projection
+i ? invert colours 
+,? toggle Ecliptic line 
+;? toggle Meridian line 
+e? toggle Ra/Dec gridlines 
+z? toggle Az/El gridlines
+m ? toggle Galactic gridlines
+M ? toggle Galactic plane
+q ? toggle cardinal points
+s ? toggle stars
+S ? toggle star labels
+u ? toggle planet/Sun/Moon labels
+p ? toggle planets/Sun/Moon 
+o ? toggle planet orbits
+c ? toggle constellation lines
+v ? toggle constellation names
+b ? toggle constellation boundaries
+R ? toggle meteor shower radiants
+8 ? set time to now
+j ? decrease time speed
+k ? set time rate to zero
+l ? increase time speed
+- ? subtract 1 day
+= ? add 1 day
+[ ? subtract 1 week
+] ? add 1 week
+% ? rotate left
+' ? rotate right
+& ? increase magnitude limit
+( ? decrease magnitude limit
+

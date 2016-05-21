@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% load static home_tags wagtailcore_tags %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-skyview{% endblock %}
+{% block extra_css %}
+
+
+{% endblock %}
+{% block content %}
+<h1>Skyview: Look up what is in the sky</h1>
+<legend>Provide either location OR latitude-and-longitude: </legend>
+<div class="row">   
+    <div class="col-md-3">             
+        <legend>Location:</legend> 
+        <input type="text" id="address" placeholder="location name" /><br>   
+        <input type="submit" value="submit" onclick="mapforAddress()"/> 
+    </div>    
+    <div class="col-md-3">
+        <legend>Latitude, longitude:</legend>
+        <input type="number"  step="1e-5" min="-90" max="90"  id="lat" name="lat1" value="" placeholder="latitude in degrees" style="float:left"><br>
+        <input type="number"  step="1e-5" min="-180" max="180" id="lng" name="lng1" value="" placeholder="longitude in degrees" style="float:left"><br><br>
+        <input type="submit" value="submit" onclick="mapforLatlng()"/> 
+    </div>   
+    
+    <div class="col-md-6">
+        <legend>Your location map:</legend>
+        <div id="map" style="width: 100%; height: 150px;"></div>    
+    </div>  
+</div>
+
+<p id="print"> </p>
+<div id="starmap" style="width:944x;height:300px;"></div>
+<!--    <button id="moveit">Move to Pleiades</button> -->
+{% endblock %}
+
+
+{% block extra_js %}
+<script src="https://maps.googleapis.com/maps/api/js?&libraries=places"></script>
+
+<script>  
+    var lat;
+    var lng; 
+    var geocoder = new google.maps.Geocoder();
+    function mapforAddress(){
+        var address = document.getElementById("address").value; 
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                var location=results[0].geometry.location;
+                lat = location.lat();
+                lng = location.lng();
+                var latlng = {lat: lat, lng:lng};
+                document.getElementById("lat").value= lat.toFixed(5);
+                document.getElementById("lng").value = lng.toFixed(5);
+                createMap(latlng);
+                viewskymap()
+                //document.getElementById("vsmap").style.display="block";               
+               //skymap.firstChild.value="view sky for location:("+lat+","+lng+")";
+            }                      
+            else {
+                window.alert("Request failed.");
+            }
+        });
+    }     
+
+    function mapforLatlng(){
+        lat=parseFloat(document.getElementById("lat").value); 
+        lng=parseFloat(document.getElementById("lng").value);
+        var latlng = {lat: lat, lng:lng};
+        geocoder.geocode({'location': latlng}, function(results, status) {
+            // we are not caring about status as the result might not a named place
+//            if (status === google.maps.GeocoderStatus.OK) {
+                    createMap(latlng);
+                    viewskymap();
+                    //document.getElementById("vsmap").style.display="block";
+                 
+
+//            } 
+//            else {
+//                window.alert('Geocoder failed due to: ' + status);
+//            }    
+        });
+    }
+    
+    function createMap(latlng){
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 8,
+            center:latlng,
+            zoomControl: true,
+            scaleControl: true,
+            fullscreenControl:true
+
+        });
+        var marker = new google.maps.Marker({
+            position: latlng,
+            map: map
+        });  
+    }   
+</script>    
+<script type="text/javascript" src="{% static 'sky/js/virtualsky/virtualsky.js' %}"></script>
+<script> 
+    
+    function viewskymap(){
+            var lat=parseFloat(document.getElementById("lat").value); 
+            var lng=parseFloat(document.getElementById("lng").value);
+            document.getElementById("print").innerHTML= "Showing below, the skyview for observer location: Latitude "+lat+", Longitude "+lng;
+            var dnow=new Date();
+            var d = new Date(1999,10, 29, 15, 31,0,0);//WARNING: months start from zero!; 5 means june.
+         
+            var projection=['polar', 'stereo', 'lambert', 'equirectangular','ortho','planechart','fisheye','gnomic'];
+            var planetarium = $.virtualsky({
+                    id: 'starmap',
+                    projection: projection[1],
+                    keyboard: true, 
+                    mouse: true, 
+                    az: 135,
+                    meridian: true,
+                    latitude: lat, 
+                    longitude: lng, 
+                
+                    clock: dnow,
+                    gridlines_gal: true,
+                    showstarlabels: true,
+                    constellations: true,               
+                    constellationboundaries: true, 
+                    ground: true,
+                    fov: 90,
+                    lang: 'en',
+                
+            });
+        
+            planetarium.addPointer({
+                'ra':83.8220792,
+                'dec':-5.3911111,
+                'label':'Orion Nebula',
+                'img':'http://server7.sky-map.org/imgcut?survey=DSS2&w=128&h=128&ra=5.58813861333333&de=-5.3911111&angle=1.25&output=PNG',
+                'url':'http://simbad.u-strasbg.fr/simbad/sim-id?Ident=M42',
+                'credit':'Wikisky',
+                'colour':'rgb(255,220,220)'
+            })
+            
+//            $('button#moveit').on('click',function(){
+//                planetarium.panTo(56.8690917,24.1053111,3000)
+//            });  
+    }  
+</script>   
+{% endblock %}

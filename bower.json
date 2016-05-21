@@ -1,0 +1,10 @@
+{
+  "name": "skyed",
+  "version": "0.1.0",
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.3.6",
+    "font-awesome": "^4.6.3",
+    "roboto-fontface": "^0.4.5"
+  }
+}

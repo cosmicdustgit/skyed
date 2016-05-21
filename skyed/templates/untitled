@@ -1,0 +1,55 @@
+<div>
+<button id="getw" onclick="showHeight()">Try it</button>
+<script> 
+function showHeight( element ) {    
+var body = document.body,
+    html = document.documentElement;
+
+var height = Math.max( body.scrollHeight, body.offsetHeight, 
+                       html.clientHeight, html.scrollHeight, html.offsetHeight );    
+
+  $( "div" ).text( "The height for the " + element + " is " + height + "px." );
+}
+$( "#getw" ).click(function() {
+  showHeight( "document" );
+});
+</script>
+</div>  
+<script>
+document.addEventListener("DOMContentLoaded", function (event) {
+    var element = document.getElementById('container');
+    var height = element.offsetHeight;
+    if (height < screen.height) {
+        document.getElementById("footer").classList.add('stikybottom');
+    }
+}, false);
+</script>
+
+html,body {
+height:100%;
+margin:0;
+padding:0;
+}
+
+#mywrapper {
+min-height:100%;
+position:relative;
+}
+
+#myheader {
+background:#ededed;
+padding:10px;
+}
+
+#mycontent {
+padding-bottom:100px;
+}
+
+#myfooter {
+background:#ffab62;
+width:100%;
+height:100px;
+position:absolute;
+bottom:0;
+left:0;
+}

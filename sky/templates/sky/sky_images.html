@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static home_tags wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% block body_class %}template-skyimages{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'sky/css/aladin.min.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1>{{ page.title}} </h1>
+<div class="row">
+    <dl>
+        <div class="col-sm-6">
+            <h1>Explore the universe</h1>
+            <p> The tool here (<a href="http://aladin.u-strasbg.fr/AladinLite/">aladinlite</a>) provides a great way to explore the universe through images. Students and teachers can use the tool to learn about the scale, shapes, and sizes of different objects in the universe.</p>
+        </div>
+        <div class="col-sm-6"   style="margin-top: 30px;">
+            <div id="aladin-lite-div" style="width:400px;height:400px;"></div>
+        </div>
+    </dl> 
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'sky/js/aladin.min.js' %}"></script>       
+        <script type="text/javascript">
+            var target='M 31'; var fov=3.5;
+            var aladin = A.aladin('#aladin-lite-div', {survey: "P/DSS/color", fov:fov, target: target });
+        </script>
+{% endblock %}

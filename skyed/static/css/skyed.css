@@ -1,0 +1,240 @@
+/* do not change anything except the colors */
+
+/*main*/
+html,body {
+    height:100%;
+    width:100%;
+    padding:0;
+    margin:0;
+}
+body{
+    margin-top:50px;    
+}
+/* note: bootstrap container-fluid adds padding of 15px each on left and right. which is useful for text content. However, 
+in a decendent row class, bootstrap removes PADDING by using a -15px each on left and right MARGIN , this is also useful as you 
+we don't need it when defining a grid. */
+#base_container-fluid {
+    width:100%;
+    height:100%;
+    margin:0;
+}
+
+
+
+/* nav menu*/
+.navbar-default,.navbar-default .navbar-brand,.footer,.navbar-default .navbar-nav>li>a,input[type=text]{
+  background-color: hsl(200,50%,90%);
+  color: hsl(200,50%,10%);
+  font-weight: 600; 
+  font-size: 13px;  
+}
+
+
+
+/* Navbar, Brand and main menu */
+.navbar-default .navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 17px;
+    line-height: 20px;
+    font-weight: 600; 
+}
+.navbar-default{    
+
+    text-transform: uppercase;
+}
+
+.navbar-default .navbar-nav>li>a {
+}
+
+.navbar-default .navbar-nav>.active>a,.navbar-default .navbar-nav>.active>a:focus,.navbar-default .navbar-nav>.active>a:hover {
+    color: hsl(0,0%,20%);
+    background-color: hsl(200,10%,80%);
+
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-brand:hover {
+    color: hsl(0,0%,100%);
+}
+
+
+/* breadcrumb */
+#well_breadcrumb{   
+    min-height: 20px;
+    padding: 0px;
+    margin:0;
+    background-color: #F0F0F0;
+    border: 0px solid #e3e3e3;
+    border-radius: 0px;
+    color: #000;
+}
+ol.breadcrumb>.active {
+    
+   color: hsl(0,0%,30%);
+}
+
+.well {
+
+}
+
+
+
+/*footer*/
+footer>div.row {
+    background:hsl(200,50%,80%);
+    min-height:200px;
+    position:relative;
+    top:50vh;
+}
+address.footer_address,p.copyright,ul.footer_social{
+    padding-top:15px; 
+    padding-bottom:0px;  
+    padding-left:15px;
+    padding-right:15px;
+    font-size:15px;
+    text-align:center;
+    color:hsl(200,50%,20%); 
+}
+
+address.footer_address>a{
+    color:hsl(200,50%,20%);
+
+}
+
+
+
+
+/* Carousel */
+.img_carousel{
+      width: 100%;
+      height:auto;
+      margin: 0px;
+      padding-right: 0px;
+      padding-left: 0px;    
+  }
+.carousel-control.right {
+    right: 0;
+    left: auto;
+    background-image: none;
+    background-image: none;
+    /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);*/
+    background-repeat: no-repeat;
+}
+
+.carousel-control.left {
+    left: 0;
+    left: auto;
+    background-image: none;
+    background-image: none;
+    background-repeat: no-repeat;
+}
+
+.carousel-caption {
+    padding-top:20px;    
+}
+.carousel-intro {
+  color: #fff;
+}
+
+
+
+
+/* general custom */
+
+.pageintro{
+  padding-top: 20px;
+  font-weight: 500;
+}
+
+.page-header {
+    padding-bottom: 9px;
+    margin: 78px 0 20px;
+    border-bottom: 1px solid #eee;
+}
+/* Listing */
+
+.list-inline{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+}
+
+input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 0px 0px 0px 0px;
+}
+
+
+
+h2, h3, h4{
+  font-weight: 300;
+  color: #333333;
+}
+
+h1{
+  font-size: 40px;
+  color: hsl(0,0%,20%);
+  font-weight: 300;
+}
+
+p{
+  font-size: 15px;
+  font-weight: 300;
+  color: hsl(0,0%,20%);
+  text-align: justify;
+}
+#a_carouselcap,#p_carouselcap{
+  font-size: 15px;
+  font-weight: 300;
+  color: hsl(0,0%,50%);
+}
+a#a_carouselcap:hover{
+  color: #FE6600;
+  text-decoration: none;
+}
+
+a{
+  color: #939393;
+}
+
+a:hover{
+  color: #FE6600;
+  text-decoration: none;
+}
+strong {
+    font-weight: 400;
+    font-size: 15px;
+}
+
+label {
+    font-weight: 300;
+}
+
+
+
+/* Buttons */
+
+.btn-danger {
+    color: #FFF;
+    background-color: transparent;
+    border-color: #FFF;
+    border-width: 2px;
+    border-radius: 0px;
+    font-weight: 300;
+}
+
+.btn-danger:hover {
+    color: #FFF;
+    background-color: #0A1E53;
+    border-color: #FFF;
+    border-width: 2px;
+    border-radius: 0px;
+    font-weight: 300;
+}
