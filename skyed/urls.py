@@ -10,7 +10,7 @@ from search import views as search_views
 
 from sky import views as sky_views
 
-urlpatterns = [
+urlpatterns = [  
     url(r'^django-admin/', include(admin.site.urls)),
 
     url(r'^admin/', include(wagtailadmin_urls)),
